@@ -30,7 +30,7 @@ const Dashboard = () => {
             <div className='sm:flex sm:container sm:border-4 rounded-2xl'>
                 <div className='sm:w-1/3 p-7'>
                     <div className='border-2 flex justify-between p-2'>
-                        <input name='location' className='focus:outline-none w-full' type='text' placeholder='Search for a location' value={input} onChange={handleInput} />
+                        <input name='location' className='focus:outline-none w-full' type='text' placeholder='Search for a city' value={input} onChange={handleInput} />
                         <button name='searchBtn' onClick={getWeather}>
                             <img src={searchIcon} alt='search' height='30px' width='30px' />
                         </button>
