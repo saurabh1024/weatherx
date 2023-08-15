@@ -37,7 +37,7 @@ const getPastWeekData = async() =>{
         <div className='pb-5'>
             <h1 className='pt-5 text-xl'>You might also want to check the Forecast for this week or data for past week.</h1>
             <button className='mt-3 2xl:w-1/5 w-1/2 xl:w-1/3 border-2 rounded-l-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getWeekData(lat,lon)}>Upcoming Week</button>
-            <button className='mt-3 2xl:w-1/5 w-1/2 xl:w-1/3 border-2 rounded-r-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getPastWeekData(lat,lon,start)}>Past Week</button>
+            <button className='mt-3 2xl:w-1/5 w-1/2 xl:w-1/3 border-2 rounded-r-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getPastWeekData(lat,lon)}>Past Week</button>
         </div>
         {flag &&
         <div className='mt-3'>

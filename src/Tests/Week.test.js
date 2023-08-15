@@ -7,12 +7,12 @@ describe('Week', () => {
     })
 
     test('triggers upcoming week button', () => {
-        render(<Week lat={0} lon={0} start={5} />)
+        render(<Week lat={0} lon={0} />)
         fireEvent.click(screen.getByText(/Upcoming Week/))
     })
 
     test('triggers past week button', () => {
-        render(<Week lat={0} lon={0} start={5} />)
+        render(<Week lat={0} lon={0} />)
         fireEvent.click(screen.getByText(/Past Week/))
     })
 });
