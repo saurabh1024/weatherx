@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { getWeatherInfo } from '../utils/Api'
 import { Kpi } from './Kpi'
 import  Week  from './Week'
-import { layers, siteMsg } from '../utils/constants'
+import { layers, siteMsg, mockDataPune } from '../utils/constants'
 import moment from 'moment/moment'
 import sun from '../assets/cloudy-day.png'
 import weatherbg from '../assets/weatherbg.png'
@@ -35,13 +35,23 @@ const Dashboard = () => {
                             <img src={searchIcon} alt='search' height='30px' width='30px' />
                         </button>
                     </div>
-                    <img src={sun} alt='sun_image' width="200px" className='sm:w-24' />
+                    <img src={sun} alt='sun_image' width="70%" className='sm:pl-20' />
                     <div className='text-lg'>
-                        <h1 className='text-2xl sm:text-2xl md:text-6xl pt-3 pl-2'>{responseData?.main?.temp ? responseData?.main?.temp : '22.00'}<sup>°C</sup></h1>
-                        <div className='text-l sm:text-md pt-1 pl-2 normal mb-8'>
-                            {moment().format('dddd, hh:mm a')}
+                        <div className='flex'>
+                            <div>
+                                <h1 className='text-2xl sm:text-2xl md:text-6xl pt-3 pl-2'>{responseData?.main?.temp ? responseData?.main?.temp : mockDataPune?.main?.temp}<sup>°C</sup></h1>
+                                <div className='text-l sm:text-md pt-3 pl-2 normal mb-8'>
+                                    {moment().format('dddd, hh:mm a')}
+                                </div>
+                            </div>
+                            {!showFlag &&<div className="pt-12">
+                                <div className='text-4xl lg:text-4xl pt-2 lg:pt-5 pl-10 mb-8 capitalize'>
+                                    {mockDataPune?.name}, {mockDataPune?.sys?.country}
+                                </div>
+                            </div>}
                         </div>
                         
+
                         {showFlag && 
                         <> 
                             <div className='text-xl lg:text-4xl pt-2 lg:pt-5 pl-2 mb-8 capitalize'>
@@ -64,7 +74,7 @@ const Dashboard = () => {
                 {showFlag ?
                 <div className='bg-stone-100 p-7 sm:w-2/3'>
                     <Kpi responseData={responseData} />
-                    <Week lat={responseData?.coord?.lat} lon={responseData?.coord?.lon} start={responseData.dt} />
+                    <Week lat={responseData?.coord?.lat} lon={responseData?.coord?.lon} start={responseData?.dt} />
                 </div>
                 :
                 <div className='bg-stone-100 p-7 sm:w-2/3'>
@@ -81,7 +91,7 @@ const Dashboard = () => {
                 }
             </div>
             <div className='container border-4 rounded-2xl mt-10'>
-                <MapComponent layers={layers} />
+                <MapComponent lat={responseData?.coord?.lat} lon={responseData?.coord?.lon} layers={layers} />
             </div>
         </div>
     )

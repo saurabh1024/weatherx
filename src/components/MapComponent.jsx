@@ -1,14 +1,13 @@
 import { TileLayer, Marker, Popup, MapContainer, Pane, LayersControl} from "react-leaflet"
 import { API_KEY } from "../utils/constants";
 
-const MapComponent = ({layers}) => {
+const MapComponent = ({lat=19, lon=73, layers}) => {
     const styleMap = {
         height: '70vh',
     }
-
     return (
         <div id="map">
-            <MapContainer trackResize className="rounded border-2 h-10" center={[20.002881114762335, 73.78871455368255]} zoom={5} style={styleMap} scrollWheelZoom={false}>
+            <MapContainer trackResize className="rounded border-2 h-10" center={[lat,lon]} zoom={3} style={styleMap} scrollWheelZoom={false}>
             <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -60,7 +59,7 @@ const MapComponent = ({layers}) => {
                 </LayersControl.Overlay>
             </LayersControl>
                  
-            <Marker position={[20.002881114762335, 73.78871455368255]}>
+            <Marker position={[lat,lon]}>
                 <Popup>
                 You are here. <br /> Looks nice.
                 </Popup>
