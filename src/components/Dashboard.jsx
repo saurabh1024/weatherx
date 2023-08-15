@@ -35,17 +35,17 @@ const Dashboard = () => {
                             <img src={searchIcon} alt='search' height='30px' width='30px' />
                         </button>
                     </div>
-                    <img src={sun} alt='sun_image' width="70%" className='sm:pl-20' />
+                    <img src={sun} alt='sun_image' width="60%" className=' 2xl:pl-8 2xl:mr-0' />
                     <div className='text-lg'>
-                        <div className='flex'>
+                        <div className='2xl:flex'>
                             <div>
-                                <h1 className='text-2xl sm:text-2xl md:text-6xl pt-3 pl-2'>{responseData?.main?.temp ? responseData?.main?.temp : mockDataPune?.main?.temp}<sup>°C</sup></h1>
-                                <div className='text-l sm:text-md pt-3 pl-2 normal mb-8'>
+                                <h1 className='text-4xl sm:text-2xl md:text-6xl pt-3 pl-2'>{responseData?.main?.temp ? responseData?.main?.temp : mockDataPune?.main?.temp}<sup>°C</sup></h1>
+                                <div className='text-l sm:text-md pt-3 pl-2 normal 2xl:mb-8'>
                                     {moment().format('dddd, hh:mm a')}
                                 </div>
                             </div>
-                            {!showFlag &&<div className="pt-12">
-                                <div className='text-4xl lg:text-4xl pt-2 lg:pt-5 pl-10 mb-8 capitalize'>
+                            {!showFlag &&<div className="2xl:pt-12 xl:pl-0">
+                                <div className='text-4xl lg:text-4xl pt-2 2xl:mb-12 2xl:pl-10 2xl:mb-8 pt-3 pl-2 capitalize'>
                                     {mockDataPune?.name}, {mockDataPune?.sys?.country}
                                 </div>
                             </div>}
