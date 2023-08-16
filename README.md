@@ -1,5 +1,6 @@
 
-![image](https://github.com/saurabh1024/weatherx/assets/55682954/52c39673-8368-4da8-b3d5-ea70f701c9b9)
+![image](https://github.com/saurabh1024/weatherx/assets/55682954/8aa373cb-5709-435b-8f2f-b87ec0a6f9c1)
+
 
 # Weatherx
 Weather forecast app with maps showing weather data. 
