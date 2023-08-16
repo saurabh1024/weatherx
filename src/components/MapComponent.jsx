@@ -1,13 +1,29 @@
-import { TileLayer, Marker, Popup, MapContainer, Pane, LayersControl} from "react-leaflet"
+import { useRef } from "react";
+import { TileLayer, Marker, Popup, MapContainer, Pane, LayersControl, useMapEvent} from "react-leaflet"
 import { API_KEY } from "../utils/constants";
 
+function SetViewOnClick({ animateRef }) {
+    const map = useMapEvent('click', (e) => {
+      map.setView(e.latlng, map.getZoom(), {
+        animate: animateRef.current || false,
+      })
+    })
+    return null
+}
+
 const MapComponent = ({lat=19, lon=73, layers}) => {
+    const animateRef = useRef(true)
+
     const styleMap = {
-        height: '70vh',
+        flex: 1,
+        height: "100%",
     }
+    
     return (
-        <div id="map">
-            <MapContainer trackResize className="rounded border-2 h-10" center={[lat,lon]} zoom={3} style={styleMap} scrollWheelZoom={false}>
+        <div id="map" className="h-[500px]">
+            <MapContainer trackResize className="rounded border-2 h-10" center={[lat,lon]} zoom={5} style={styleMap} scrollWheelZoom={false}>
+            <SetViewOnClick animateRef={animateRef} />
+
             <TileLayer
                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { API_KEY } from './constants'
 
 export const getWeatherInfo = async (city) =>{
-    const API_URL = 'http://api.openweathermap.org/data/2.5/weather'
+    const API_URL = 'https://api.openweathermap.org/data/2.5/weather'
     try{
         let response = await axios.get(`${API_URL}?q=${city}&appid=${API_KEY}&units=metric`,{responseType:"json"})
         return response.data
@@ -14,7 +14,7 @@ export const getWeatherInfo = async (city) =>{
 
 export const getWeeklyForecast = async (lat,lon) => {
     // const key = '8d2a110b6ad468ae1a0e459757cf659d'
-    const WEEKDATA_URL = 'http://api.openweathermap.org/data/2.5/forecast'
+    const WEEKDATA_URL = 'https://api.openweathermap.org/data/2.5/forecast'
     try{
         let response = await axios.get(`${WEEKDATA_URL}?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`,{responseType:"json"})
         return response.data
@@ -28,7 +28,7 @@ export const getWeeklyForecast = async (lat,lon) => {
 
 export const getPastWeekForecast = async (lat,lon) => {
     // const key = '8d2a110b6ad468ae1a0e459757cf659d'
-    const WEEKDATA_URL = 'http://api.openweathermap.org/data/2.5/history/city'    
+    const WEEKDATA_URL = 'https://api.openweathermap.org/data/2.5/history/city'    
     try{
         let response = await axios.get(`${WEEKDATA_URL}?lat=${lat}&lon=${lon}&type=hour&appid=${API_KEY}&units=metric`,{responseType:"json"})
         return response.data

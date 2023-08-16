@@ -51,30 +51,27 @@ const Dashboard = () => {
                             </div>}
                         </div>
                         
-
                         {showFlag && 
                         <> 
                             <div className='text-xl lg:text-4xl pt-2 lg:pt-5 pl-2 mb-8 capitalize'>
-                                Feels like {responseData?.main?.temp}°C. {responseData?.weather[0]?.description}. 
+                                Feels like {responseData?.main?.temp?responseData?.main?.temp: mockDataPune?.main?.temp }°C. {responseData?.weather[0]?.description}
                             </div>
-                            <div className='w-full border-2 rounded-xl px-3 py-5 flex-column justify-center'>
-                                <div className='lg:text-2xl text-sm font-semibold pb-1 pl-2 2xl:pl-20'>
-                                    Dont miss the sunset.
-                                </div>
-                                <div className='lg:text-xl text-sm text-left mb-5 pl-2 2xl:pl-20'>
-                                    <p>
-                                        Sunrise was at {moment.unix(responseData?.sys?.sunrise).format("hh:mm a")}
-                                    </p>
-                                    Sunset will be at {moment.unix(responseData?.sys?.sunset).format("hh:mm a")}
-                                </div>
-                            </div>
+                            
                         </>}
                     </div>
                 </div>
                 {showFlag ?
                 <div className='bg-stone-100 p-7 sm:w-2/3'>
                     <Kpi responseData={responseData} />
-                    <Week lat={responseData?.coord?.lat} lon={responseData?.coord?.lon} start={responseData?.dt} />
+                    <div className='w-full border-2 rounded-xl px-3 bg-white mt-5 flex-column justify-center'>
+                                <div className='lg:text-2xl text-sm font-semibold mt-5 pb-1 pl-2 2xl:pl-20'>
+                                    Dont miss the sunset.
+                                </div>
+                                <div className='lg:text-xl text-sm text-left mb-5 pl-2 2xl:pl-20'>
+                                    Sunrise was at {moment.unix(responseData?.sys?.sunrise).format("hh:mm a")} and
+                                    Sunset will be at {moment.unix(responseData?.sys?.sunset).format("hh:mm a")}
+                                </div>
+                            </div>
                 </div>
                 :
                 <div className='bg-stone-100 p-7 sm:w-2/3'>
@@ -90,6 +87,9 @@ const Dashboard = () => {
                 </div>
                 }
             </div>
+            {showFlag && <div className='container border-4 rounded-2xl mt-10 p-7'>
+                <Week lat={responseData?.coord?.lat} lon={responseData?.coord?.lon} start={responseData?.dt} />
+            </div>}
             <div className='container border-4 rounded-2xl mt-10'>
                 <MapComponent lat={responseData?.coord?.lat} lon={responseData?.coord?.lon} layers={layers} />
             </div>

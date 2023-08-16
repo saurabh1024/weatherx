@@ -13,7 +13,7 @@ const getWeekData = async() =>{
     let data = []
     let result = await getWeeklyForecast(lat,lon)
     // this will push only unique dates
-    result.list.forEach(item => {
+    result?.list?.forEach(item => {
         let justDate = item.dt_txt.split(' ')[0];
         let justTime = item.dt_txt.split(' ')[1];
         if (!uniqueDates.includes(justDate)) {
@@ -27,21 +27,24 @@ const getWeekData = async() =>{
 }
 const getPastWeekData = async() =>{
     let result = await getPastWeekForecast(lat,lon,start)
-    setWeekData(result.list)
-    if(result?.list?.length > 0){
-        setFlag(true)
+    if(result.status === 401){
+        setWeekData([])
+    }
+    else{
+        setWeekData(result.list)
     }
 }
   return (
     <div className=''>
+        <h1 className='text-4xl pb-3'>Weeky forecast</h1>
+
         <div className='pb-5'>
-            <h1 className='pt-5 text-xl'>You might also want to check the Forecast for this week or data for past week.</h1>
-            <button className='mt-3 2xl:w-1/5 w-1/2 xl:w-1/3 border-2 rounded-l-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getWeekData(lat,lon)}>Upcoming Week</button>
-            <button className='mt-3 2xl:w-1/5 w-1/2 xl:w-1/3 border-2 rounded-r-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getPastWeekData(lat,lon)}>Past Week</button>
+            <h1 className='pt-4 pb-5 text-xl'>You might also want to check the Forecast for this week or data for past week.</h1>
+            <button className='mt-3 focus:bg-slate-300 2xl:w-1/5 w-1/2 xl:w-1/3 border-2 rounded-l-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getWeekData(lat,lon)}>Upcoming Week</button>
+            <button className='mt-3 focus:bg-slate-300 2xl:w-1/5 w-1/2 xl:w-1/3 border-2 rounded-r-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getPastWeekData(lat,lon)}>Past Week</button>
         </div>
         {flag &&
         <div className='mt-3'>
-            <h1 className='text-2xl pb-3'>Upcoming week forecast</h1>
             <table className='bg-white w-full table-fixed text-center overflow-y-auto h-32'>
                 <thead>
                     <tr>
@@ -52,7 +55,12 @@ const getPastWeekData = async() =>{
                 </thead>
                 
                 <tbody>
-                    {weekData?.map((dateList,index) => {
+                    {weekData?.length === 0 ?
+                    <tr>
+                        <td colSpan={3} className='border-2 border-r-0 rounded py-3'>Forecast history API is not availale at the moment, please try later.</td>
+                    </tr>
+                    :
+                    weekData?.map((dateList,index) => {
                         return <Day key={index} date={dateList?.dt_txt} data={dateList} />
                     })}
                 </tbody>
