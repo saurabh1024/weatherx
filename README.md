@@ -1,3 +1,10 @@
+
+![image](https://github.com/saurabh1024/weatherx/assets/55682954/52c39673-8368-4da8-b3d5-ea70f701c9b9)
+
+# Weatherx
+Weather forecast app with maps showing weather data. 
+APIs used from openweather.org
+#
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
