@@ -20,7 +20,7 @@ const MapComponent = ({lat=19, lon=73, layers}) => {
     }
     
     return (
-        <div id="map" className="sm:h-[500px] h-[200px]">
+        <div id="map" className="sm:h-[500px] h-[400px]">
             <MapContainer trackResize className="rounded border-2 h-10" center={[lat,lon]} zoom={5} style={styleMap} scrollWheelZoom={false}>
             <SetViewOnClick animateRef={animateRef} />
 

@@ -9,7 +9,7 @@ export const Day = ({date, data}) => {
             {moment(date).format('dddd') === moment().format('dddd') ? 'Today' : moment(date).format('dddd')}
         </td>
         <td className="flex-column justify-center items-center">
-            <div className="p-3 border-t-0 border-b-0">{data?.main?.temp_min} °C to {data?.main?.temp_max} °C</div>
+            <div className="p-3 border-t-0 text-sm border-b-0">{data?.main?.temp_min} °C to {data?.main?.temp_max} °C</div>
         </td>
         <td className="p-3 inline-flex align-self-center">
             {data?.weather[0].description.includes('sun')?

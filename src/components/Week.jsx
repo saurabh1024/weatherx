@@ -40,8 +40,8 @@ const getPastWeekData = async() =>{
 
         <div className='pb-5 w-full'>
             <h1 className='pt-4 pb-5 text-xl'>You might also want to check the Forecast for this week or data for past week.</h1>
-            <button className='mt-3 w-full sm:w-1/2 focus:bg-slate-300 2xl:w-1/5  xl:w-1/3 border-2 sm-rounded-l-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getWeekData(lat,lon)}>Upcoming Week</button>
-            <button className='mt-3 w-full sm:w-1/2 focus:bg-slate-300 2xl:w-1/5  xl:w-1/3 border-2 sm-rounded-r-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getPastWeekData(lat,lon)}>Past Week</button>
+            <button className='mt-3 w-full sm:w-1/2 focus:bg-slate-300 2xl:w-1/5 xl:w-1/3 border-2 rounded-2xl sm:rounded-r-sm px-5 py-1 bg-white hover:border-slate-400' onClick={() => getWeekData(lat,lon)}>Upcoming Week</button>
+            <button className='mt-3 w-full sm:w-1/2 focus:bg-slate-300 2xl:w-1/5 xl:w-1/3 border-2 rounded-2xl sm:rounded-l-sm px-5 py-1 bg-white hover:border-slate-400' onClick={() => getPastWeekData(lat,lon)}>Past Week</button>
         </div>
         {flag &&
         <div className='mt-3'>
@@ -54,10 +54,10 @@ const getPastWeekData = async() =>{
                     </tr>
                 </thead>
                 
-                <tbody className='tet-center'>
+                <tbody className='text-center'>
                     {weekData?.length === 0 ?
                     <tr>
-                        <td colSpan={3} className='border-2 border-r-0 rounded py-3'>Forecast history API is not availale at the moment, please try later.</td>
+                        <td colSpan={3} className='border-2 rounded py-3'>Forecast history API is not availale at the moment, please try later.</td>
                     </tr>
                     :
                     weekData?.map((dateList,index) => {
