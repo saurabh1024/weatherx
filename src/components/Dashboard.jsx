@@ -81,8 +81,8 @@ const Dashboard = () => {
                             {siteMsg}
                         </div>
                     </div>
-                    <div className='text-2xl pt-5 pl-2 mb-8 capitalize'>
-                        <img src={weatherbg} alt='sun_image' className='block lg:pl-10 h-60' />
+                    <div className='text-2xl pt-5'>
+                        <img src={weatherbg} alt='sun_image' className='lg:pl-10' />
                     </div>
                 </div>
                 }

@@ -4,7 +4,7 @@ import cloudy from "../assets/cloudy.png"
 import rainy from "../assets/rainy.png"
 export const Day = ({date, data}) => {
   return (
-    <tr className="border-2 rounded px-3 py-2">
+    <tr className="border-2 text-center rounded px-3 py-2">
         <td className="p-3">
             {moment(date).format('dddd') === moment().format('dddd') ? 'Today' : moment(date).format('dddd')}
         </td>

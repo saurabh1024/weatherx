@@ -38,15 +38,15 @@ const getPastWeekData = async() =>{
     <div className=''>
         <h1 className='text-4xl pb-3'>Weeky forecast</h1>
 
-        <div className='pb-5'>
+        <div className='pb-5 w-full'>
             <h1 className='pt-4 pb-5 text-xl'>You might also want to check the Forecast for this week or data for past week.</h1>
-            <button className='mt-3 focus:bg-slate-300 2xl:w-1/5 w-1/2 xl:w-1/3 border-2 rounded-l-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getWeekData(lat,lon)}>Upcoming Week</button>
-            <button className='mt-3 focus:bg-slate-300 2xl:w-1/5 w-1/2 xl:w-1/3 border-2 rounded-r-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getPastWeekData(lat,lon)}>Past Week</button>
+            <button className='mt-3 w-full sm:w-1/2 focus:bg-slate-300 2xl:w-1/5  xl:w-1/3 border-2 sm-rounded-l-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getWeekData(lat,lon)}>Upcoming Week</button>
+            <button className='mt-3 w-full sm:w-1/2 focus:bg-slate-300 2xl:w-1/5  xl:w-1/3 border-2 sm-rounded-r-2xl px-5 py-1 bg-white hover:border-slate-400' onClick={() => getPastWeekData(lat,lon)}>Past Week</button>
         </div>
         {flag &&
         <div className='mt-3'>
-            <table className='bg-white w-full table-fixed text-center overflow-y-auto h-32'>
-                <thead>
+            <table className='bg-white w-full'>
+                <thead className='sm:visible collapse text-center'>
                     <tr>
                         <th className='border-2 border-r-0 rounded py-3'>Date and Time</th>
                         <th className='border-2 border-r-0 border-l-0 rounded'>Temperature</th>
@@ -54,7 +54,7 @@ const getPastWeekData = async() =>{
                     </tr>
                 </thead>
                 
-                <tbody>
+                <tbody className='tet-center'>
                     {weekData?.length === 0 ?
                     <tr>
                         <td colSpan={3} className='border-2 border-r-0 rounded py-3'>Forecast history API is not availale at the moment, please try later.</td>
