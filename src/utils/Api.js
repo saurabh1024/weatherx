@@ -2,9 +2,10 @@ import axios from 'axios'
 import { API_KEY } from './constants'
 
 export const getWeatherInfo = async (city) =>{
+    const cityName = city.trim()
     const API_URL = 'https://api.openweathermap.org/data/2.5/weather'
     try{
-        let response = await axios.get(`${API_URL}?q=${city}&appid=${API_KEY}&units=metric`,{responseType:"json"})
+        let response = await axios.get(`${API_URL}?q=${cityName}&appid=${API_KEY}&units=metric`,{responseType:"json"})
         return response.data
     } catch(error){
         console.log("Error : "+ error.message)
